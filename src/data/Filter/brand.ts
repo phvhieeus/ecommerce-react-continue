@@ -1,0 +1,17 @@
+export const brands = [
+  { name: "Nike", value: "nike" },
+  { name: "Adidas", value: "adidas" },
+  { name: "Puma", value: "puma" },
+  { name: "Reebok", value: "reebok" },
+  { name: "Under Armour", value: "under_armour" },
+  { name: "Levi's", value: "levis" },
+  { name: "H&M", value: "hm" },
+  { name: "Zara", value: "zara" },
+  { name: "Uniqlo", value: "uniqlo" },
+  { name: "Gap", value: "gap" },
+  { name: "Tommy Hilfiger", value: "tommy_hilfiger" },
+  { name: "Calvin Klein", value: "calvin_klein" },
+  { name: "Ralph Lauren", value: "ralph_lauren" },
+  { name: "Gucci", value: "gucci" },
+  { name: "Louis Vuitton", value: "louis_vuitton" },
+];
