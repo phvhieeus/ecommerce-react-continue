@@ -2,7 +2,7 @@ import React from "react";
 import DealCard from "./DealCard";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-// import Slider from "react-slick";
+import Slider from "react-slick";
 
 const Deal = () => {
   const settings = {
@@ -15,11 +15,12 @@ const Deal = () => {
 
   return (
     <div className="py-5 lg:px-20">
-      <div className="flex items-center justify-between">
-        {[1, 1, 1, 1, 1, 1].map((item) => (
-          <DealCard />
+      {/* Sử dụng component Slider thay vì div thông thường */}
+      <Slider {...settings}>
+        {[1, 1, 1, 1, 1, 1].map((item, index) => (
+          <DealCard key={index} />
         ))}
-      </div>
+      </Slider>
     </div>
   );
 };
