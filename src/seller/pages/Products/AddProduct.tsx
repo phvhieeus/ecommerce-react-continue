@@ -158,6 +158,8 @@ const AddProductForm = () => {
           </Grid>
           <Grid size={{ xs: 12 }}>
             <TextField
+              multiline
+              rows={4}
               fullWidth
               id="description"
               name="description"
@@ -173,12 +175,13 @@ const AddProductForm = () => {
               required
             />
           </Grid>
-          <Grid size={{ xs: 12 }}>
+          <Grid size={{ xs: 12, md: 4, lg: 3 }}>
             <TextField
               fullWidth
               id="mrp_price"
               name="mrpPrice"
               label="MRP Price"
+              type="number"
               value={formik.values.mrpPrice}
               onChange={formik.handleChange}
               error={formik.touched.mrpPrice && Boolean(formik.errors.mrpPrice)}
@@ -186,7 +189,7 @@ const AddProductForm = () => {
               required
             />
           </Grid>
-          <Grid size={{ xs: 12 }}>
+          <Grid size={{ xs: 12, md: 4, lg: 3 }}>
             <TextField
               fullWidth
               id="sellingPrice"
@@ -205,7 +208,7 @@ const AddProductForm = () => {
               required
             />
           </Grid>
-          <Grid size={{ xs: 12 }}>
+          <Grid size={{ xs: 12, md: 4, lg: 3 }}>
             <FormControl
               fullWidth
               error={formik.touched.color && Boolean(formik.errors.color)}
@@ -242,7 +245,7 @@ const AddProductForm = () => {
               )}
             </FormControl>
           </Grid>
-          <Grid size={{ xs: 12 }}>
+          <Grid size={{ xs: 12, md: 4, lg: 3 }}>
             <FormControl
               fullWidth
               error={formik.touched.sizes && Boolean(formik.errors.sizes)}
@@ -271,7 +274,32 @@ const AddProductForm = () => {
               )}
             </FormControl>
           </Grid>
-          <Grid size={{ xs: 12 }}>
+          <Grid size={{ xs: 12, md: 4, lg: 4 }}>
+            <FormControl
+              fullWidth
+              error={formik.touched.category && Boolean(formik.errors.category)}
+              required
+            >
+              <InputLabel id="category2-label">Category</InputLabel>
+              <Select
+                labelId="category-label"
+                id="category"
+                name="category"
+                value={formik.values.category}
+                onChange={formik.handleChange}
+                label="Second Category"
+              >
+                {formik.values.category &&
+                  categoryTwo[formik.values.category]?.map((item) => (
+                    <MenuItem value={item.categoryId}>{item.name}</MenuItem>
+                  ))}
+              </Select>
+              {formik.touched.category && formik.errors.category && (
+                <FormHelperText>{formik.errors.category}</FormHelperText>
+              )}
+            </FormControl>
+          </Grid>
+          <Grid size={{ xs: 12, md: 4, lg: 4 }}>
             <FormControl
               fullWidth
               error={formik.touched.category && Boolean(formik.errors.category)}
@@ -296,7 +324,7 @@ const AddProductForm = () => {
               )}
             </FormControl>
           </Grid>
-          <Grid size={{ xs: 12 }}>
+          <Grid size={{ xs: 12, md: 4, lg: 4 }}>
             <FormControl
               fullWidth
               error={formik.touched.category && Boolean(formik.errors.category)}
