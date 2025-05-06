@@ -1,4 +1,4 @@
-const uploadToCoudinary = async (pics: any) => {
+export const uploadToCoudinary = async (pics: any) => {
   const cloud_name = "dw6nef7rm";
   const upload_preset = "zosh-food";
 
