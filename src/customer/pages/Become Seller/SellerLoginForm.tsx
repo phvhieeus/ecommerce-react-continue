@@ -1,8 +1,15 @@
-import { TextField } from "@mui/material";
+import { Button, TextField } from "@mui/material";
 import { useFormik } from "formik";
 import React from "react";
+import { useAppDispatch } from "../../../State/Store";
+import { sendLoginSignupOtp } from "../../../State/AuthSlice";
+import { sellerLogin } from "../../../State/seller/sellerAuthSlice";
+import { useNavigate } from "react-router-dom";
 
 const SellerLoginForm = () => {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -10,8 +17,19 @@ const SellerLoginForm = () => {
     },
     onSubmit: (values) => {
       console.log("form data", values);
+      dispatch(sellerLogin({ email: values.email, otp: values.otp }))
+        .unwrap()
+        .then((result) => {
+          if (result && result.success) {
+            navigate("/seller");
+          }
+        });
     },
   });
+
+  const handleSendOtp = () => {
+    dispatch(sendLoginSignupOtp({ email: formik.values.email }));
+  };
 
   return (
     <div>
@@ -46,6 +64,23 @@ const SellerLoginForm = () => {
             />
           </div>
         )}
+
+        <Button
+          onClick={handleSendOtp}
+          fullWidth
+          variant="contained"
+          sx={{ py: "11px" }}
+        >
+          send otp
+        </Button>
+        <Button
+          onClick={() => formik.handleSubmit()}
+          fullWidth
+          variant="contained"
+          sx={{ py: "11px" }}
+        >
+          Login
+        </Button>
       </div>
     </div>
   );
